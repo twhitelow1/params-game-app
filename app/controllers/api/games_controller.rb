@@ -1,7 +1,11 @@
 class Api::GamesController < ApplicationController
   def games_action
-    url_input = params["name"]
-    @output_message = "This is your name: #{url_input}"
+    @name = params["name"]
+    if @name[0].downcase == "a"
+      @output_message = "Your name starts with the first letter of the alphabet."
+    else
+      @output_message = "Your name isnt special."
+    end
     render "games.json.jb"
   end
 end
