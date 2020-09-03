@@ -8,4 +8,16 @@ class Api::GamesController < ApplicationController
     end
     render "games.json.jb"
   end
+
+  def number_action
+    number = params["number"].to_i
+    if number == 50
+      @output_message = "Good Job! #{number} is the right number!"
+    elsif number > 50
+      @output_message = "#{number} is to high please guess again."
+    else
+      @output_message = "#{number} is to low please guess again."
+    end
+    render "number_game.json.jb"
+  end
 end
